@@ -8,3 +8,7 @@ jobs:
     steps:
     - name: Hello
       run: echo Hello
+  anotherjob:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo This is another job
