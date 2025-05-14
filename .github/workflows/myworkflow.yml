@@ -1,0 +1,10 @@
+name: simple-workflow
+
+on: push
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Hello
+      run: echo Hello
