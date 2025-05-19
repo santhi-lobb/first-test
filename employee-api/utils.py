@@ -18,7 +18,10 @@ def find_employee_by_id(employee_id):
     return None
 
 
-def find_employee_by_name(name):
-    """Return employees matching the name."""
+def filter_employees(filter_data):
+    """Return employees whose fields contains the value"""
     employees = get_data()
-    return [employee for employee in employees if name in employee['name']]
+    for field, value in filter_data.items():
+        if value is not None:
+            employees = [emp for emp in employees if value.lower() in emp[field].lower()]
+    return employees
