@@ -1,4 +1,4 @@
-"""Utility functions for employee data handling."""
+from fastapi import HTTPException
 import json
 
 
@@ -11,11 +11,13 @@ def get_data():
 
 def find_employee_by_id(employee_id):
     """Return an employee dictionary by ID."""
+    if not employee_id.isdigit():
+        raise HTTPException(400, "ID should be numeric")
     employees = get_data()
     for employee in employees:
-        if employee['id'] == employee_id:
+        if employee['id'] == int(employee_id):
             return employee
-    return None
+    raise HTTPException(404, "Employee not found")
 
 
 def filter_employees(filter_data):
