@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routes import employee_router
+from employee_routes import employee_router
 
 app = FastAPI()
 
