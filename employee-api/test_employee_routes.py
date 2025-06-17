@@ -4,6 +4,7 @@ from main import app
 
 client = TestClient(app)
 
+# ------------- GET /employees/{emp_id} -------------------------------
 
 def test_get_employee_by_valid_id():
     response = client.get('/employees/1')
@@ -37,7 +38,8 @@ def test_get_employee_500_error(mocker):
     )
     response = client.get("/employees/1")
     assert response.status_code == 500
-    
+
+# ------------- GET /employees -----------------------
 
 def test_get_all_employees():
     response = client.get("/employees/")
@@ -51,7 +53,8 @@ def test_get_all_employees():
         "email=ram@gmailcom",
         "phone=1234",
         "name=saul&phone=89899983",
-        "name=tony&email=tony&phone=9"
+        "name=tony&email=tony&phone=9",
+        ""
     ]
 )
 def test_get_all_employees_valid_query(params):
